@@ -46,6 +46,11 @@ img { max-width: 100%; display: block; }
 }
 .brand { display: inline-flex; align-items: center; gap: 12px; }
 .brand img { height: 34px; width: auto; display: block; }
+.brand-mark {
+  font-family: var(--font-display);
+  color: #fff; font-size: 22px; font-weight: 900;
+  letter-spacing: 0.02em; text-transform: uppercase; line-height: 1;
+}
 .brand-sub {
   color: var(--primary); font-size: 10px;
   letter-spacing: 0.28em; text-transform: uppercase; font-weight: 800;
