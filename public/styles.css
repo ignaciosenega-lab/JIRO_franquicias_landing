@@ -1,0 +1,196 @@
+/* JIRO SUSHI · Franquicias landing
+   Tema: negro con acento lime (mismo del panel admin) */
+:root {
+  --bg: #0b0d07;
+  --surface: #12150a;
+  --surface-2: #1d230f;
+  --border: rgba(196, 255, 46, 0.14);
+  --primary: #c4ff2e;
+  --text: #e2e8f0;
+  --text-dim: #94a3b8;
+  --text-mute: #64748b;
+  --radius: 18px;
+  --wrap: 1100px;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: radial-gradient(ellipse at top, #14170b 0%, var(--bg) 60%) fixed;
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+
+/* ── Header ────────────────────────────────────────── */
+.site-header {
+  position: sticky; top: 0; z-index: 10;
+  backdrop-filter: blur(12px);
+  background: rgba(11, 13, 7, 0.7);
+  border-bottom: 1px solid var(--border);
+}
+.site-header .wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 14px; padding-bottom: 14px;
+}
+.brand { display: inline-flex; align-items: baseline; gap: 8px; font-weight: 900; letter-spacing: -0.02em; }
+.brand-mark { color: var(--primary); font-size: 22px; font-style: italic; text-transform: uppercase; }
+.brand-sub { color: var(--text-dim); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; }
+.site-nav { display: flex; align-items: center; gap: 22px; }
+.site-nav a { color: var(--text-dim); font-size: 13px; font-weight: 600; }
+.site-nav a:hover { color: var(--primary); }
+
+/* ── Botones ───────────────────────────────────────── */
+.cta {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 14px 22px;
+  background: var(--primary); color: #0b0d07;
+  border: none; border-radius: 12px;
+  font-weight: 800; font-size: 14px; letter-spacing: 0.02em;
+  cursor: pointer; transition: transform 0.12s ease, box-shadow 0.12s ease;
+  box-shadow: 0 8px 24px rgba(196, 255, 46, 0.15);
+}
+.cta:hover { transform: translateY(-1px); box-shadow: 0 12px 32px rgba(196, 255, 46, 0.28); }
+.cta:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+.cta-sm { padding: 8px 14px; font-size: 12px; border-radius: 10px; }
+.cta-ghost {
+  display: inline-flex; align-items: center;
+  padding: 13px 20px;
+  background: transparent; color: var(--text);
+  border: 1px solid var(--border); border-radius: 12px;
+  font-weight: 700; font-size: 14px;
+  transition: border-color 0.12s ease, color 0.12s ease;
+}
+.cta-ghost:hover { color: var(--primary); border-color: rgba(196,255,46,0.35); }
+
+/* ── Hero ──────────────────────────────────────────── */
+.hero { padding: 80px 0 60px; }
+.hero-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
+@media (min-width: 900px) { .hero-grid { grid-template-columns: 1.2fr 1fr; gap: 60px; } }
+.eyebrow {
+  display: inline-block;
+  color: var(--primary);
+  background: rgba(196, 255, 46, 0.08);
+  border: 1px solid rgba(196, 255, 46, 0.22);
+  border-radius: 100px;
+  padding: 4px 12px;
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em; font-weight: 800;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: clamp(32px, 5.5vw, 56px);
+  line-height: 1.08; letter-spacing: -0.02em;
+  margin: 0 0 20px;
+  color: #f8fafc;
+}
+.lede {
+  font-size: 17px; color: var(--text-dim); margin: 0 0 30px; max-width: 540px;
+}
+.hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.stats {
+  display: flex; gap: 32px; margin-top: 40px; padding-top: 30px;
+  border-top: 1px solid var(--border);
+}
+.stats > div { display: flex; flex-direction: column; }
+.stats .num { color: var(--primary); font-size: 24px; font-weight: 900; letter-spacing: -0.02em; }
+.stats .lbl { color: var(--text-mute); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
+.hero-image {
+  aspect-ratio: 1 / 1;
+  position: relative;
+  display: none;
+}
+@media (min-width: 900px) { .hero-image { display: block; } }
+.hero-blob {
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(196, 255, 46, 0.35), transparent 55%),
+              radial-gradient(circle at 70% 60%, rgba(196, 255, 46, 0.12), transparent 60%);
+  filter: blur(20px);
+}
+
+/* ── Secciones ─────────────────────────────────────── */
+.section { padding: 60px 0; }
+.section-alt { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.section-title {
+  font-size: clamp(24px, 3.5vw, 32px);
+  letter-spacing: -0.015em;
+  margin: 0 0 30px; color: #f1f5f9;
+}
+.grid-3 {
+  display: grid; gap: 16px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 700px) { .grid-3 { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.card:hover { border-color: rgba(196,255,46,0.28); transform: translateY(-2px); }
+.card-icon { font-size: 26px; margin-bottom: 10px; }
+.card h3 { margin: 0 0 8px; font-size: 16px; color: #f1f5f9; }
+.card p { margin: 0; color: var(--text-dim); font-size: 14px; }
+
+.reqs { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; max-width: 780px; }
+.reqs li {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  padding: 14px 18px; color: var(--text-dim); font-size: 14px;
+}
+.reqs li strong { color: var(--text); }
+.tip { color: var(--text-mute); font-size: 13px; margin-top: 20px; font-style: italic; }
+
+/* ── Formulario ────────────────────────────────────── */
+.contact-grid { display: grid; gap: 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .contact-grid { grid-template-columns: 1fr 1.2fr; align-items: start; } }
+.form {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 24px; display: flex; flex-direction: column; gap: 14px;
+}
+.form .row {
+  display: grid; grid-template-columns: 1fr; gap: 14px;
+}
+@media (min-width: 600px) { .form .row { grid-template-columns: 1fr 1fr; } }
+.form label { display: flex; flex-direction: column; gap: 6px; }
+.form label > span {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-mute); font-weight: 700;
+}
+.form input, .form textarea {
+  width: 100%; background: #0b0d07; color: var(--text);
+  border: 1px solid var(--border); border-radius: 10px;
+  padding: 12px 14px; font-family: inherit; font-size: 14px;
+  transition: border-color 0.12s ease;
+}
+.form input:focus, .form textarea:focus {
+  outline: none; border-color: rgba(196, 255, 46, 0.55);
+}
+.form textarea { resize: vertical; min-height: 100px; }
+.form-submit { margin-top: 4px; align-self: flex-start; position: relative; }
+.form-submit[disabled] .btn-label { opacity: 0.6; }
+.btn-spinner {
+  display: inline-block; width: 14px; height: 14px; margin-left: 10px;
+  border: 2px solid rgba(11,13,7,0.35); border-top-color: #0b0d07;
+  border-radius: 50%; animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.form-note { min-height: 20px; margin: 4px 0 0; font-size: 13px; }
+.form-note.error { color: #f87171; }
+.form-note.ok { color: var(--primary); }
+
+/* ── Footer ────────────────────────────────────────── */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 30px 0 40px;
+  color: var(--text-mute);
+}
+.site-footer .wrap {
+  display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center;
+}
+.foot-brand { font-weight: 800; letter-spacing: 0.02em; color: var(--text-dim); font-size: 13px; }
+.foot-links { display: flex; gap: 8px; font-size: 13px; }
+.foot-links a:hover { color: var(--primary); }
+.foot-copy { font-size: 11px; }
