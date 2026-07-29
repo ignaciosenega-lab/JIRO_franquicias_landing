@@ -3,6 +3,25 @@
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
+  // Menú mobile (hamburguesa)
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = document.querySelector('.site-nav');
+  if (toggle && nav) {
+    var close = function () {
+      document.body.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
+    toggle.addEventListener('click', function () {
+      var open = !document.body.classList.contains('nav-open');
+      document.body.classList.toggle('nav-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    // Cerrar al hacer click en un link
+    nav.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', close); });
+    // Cerrar con Escape
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  }
+
   var form = document.getElementById('leadForm');
   var note = document.getElementById('formNote');
   if (!form || !note) return;
